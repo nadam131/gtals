@@ -34,31 +34,34 @@ const Home: NextPage = () => {
                 {data.data.map((article, i) => {
                   return (
                     <GridItem
+                      key={article.id}
                       gridColumn={`span ${i === 0 ? 7 : i === 1 ? 5 : 4}`}
                     >
                       <Link href={`/news/${article.slug}`}>
-                        <Box
-                          p={4}
-                          h="100%"
-                          border="1px solid"
-                          borderColor="gray.700"
-                          transition="border-color .2s"
-                          _hover={{
-                            borderColor: "teal.100",
-                          }}
-                        >
-                          <AspectRatio ratio={16 / 9}>
-                            <Image
-                              src={article.image}
-                              layout="fill"
-                              objectFit="cover"
-                            />
-                          </AspectRatio>
-                          <Heading mt={5} size="md" as="h2">
-                            {article.title}
-                          </Heading>
-                          <Text mt={3}>{article.description}</Text>
-                        </Box>
+                        <a>
+                          <Box
+                            p={4}
+                            h="100%"
+                            border="1px solid"
+                            borderColor="gray.700"
+                            transition="border-color .2s"
+                            _hover={{
+                              borderColor: "primary",
+                            }}
+                          >
+                            <AspectRatio ratio={16 / 9}>
+                              <Image
+                                src={article.image}
+                                layout="fill"
+                                objectFit="cover"
+                              />
+                            </AspectRatio>
+                            <Heading mt={5} size="md" as="h2">
+                              {article.title}
+                            </Heading>
+                            <Text mt={3}>{article.description}</Text>
+                          </Box>
+                        </a>
                       </Link>
                     </GridItem>
                   );

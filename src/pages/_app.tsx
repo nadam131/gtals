@@ -6,10 +6,12 @@ import "@fontsource/open-sans/700.css";
 
 import theme from "../theme";
 import Layout from "../components/Layout/Layout";
+import Fonts from "../components/Fonts/Fonts";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
+      <Fonts />
       <Layout>
         <Component {...pageProps} />
       </Layout>
