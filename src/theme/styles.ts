@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   styles: {
     global: {
@@ -6,9 +7,5 @@ export default {
         color: "white",
       },
     },
-  },
-  fonts: {
-    heading: "Open Sans",
-    body: "Raleway",
   },
 };
