@@ -4,6 +4,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import "@fontsource/raleway/400.css";
 import "@fontsource/open-sans/700.css";
 
+import "../components/Paginator/Paginator.css";
+
 import theme from "../theme";
 import Layout from "../components/Layout/Layout";
 import Fonts from "../components/Fonts/Fonts";

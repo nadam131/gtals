@@ -8,7 +8,7 @@ const styles = {
   wrapper: {
     borderBottom: "2px",
     backgroundColor: "gray.800",
-    borderColor: "primary",
+    borderColor: "primary.500",
   },
 };
 

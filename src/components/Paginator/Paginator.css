@@ -1,0 +1,21 @@
+.react-paginate-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 -10px;
+}
+
+.react-paginate-container ul,
+.react-paginate-container li {
+  list-style-type: none;
+}
+
+.react-paginate-container li {
+  margin: 0 10px;
+}
+
+.react-paginate-container li:first-child {
+  margin-right: auto;
+}
+.react-paginate-container li:last-child {
+  margin-left: auto;
+}

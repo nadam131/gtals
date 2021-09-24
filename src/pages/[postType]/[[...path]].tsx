@@ -19,41 +19,18 @@ export async function getServerSideProps({
   const taxonomy = path?.[0];
   const term = path?.[1];
 
-  console.log(postType, "postType");
-  console.log(taxonomy, "taxonomy");
-  console.log(term, "term");
-  console.log(page, "page");
-
   if (taxonomy && term) {
     newQuery = `http://localhost:4000/articles/${postType}/${taxonomy}/${term}/${page}`;
   } else {
     newQuery = `http://localhost:4000/articles/${postType}/${page}`;
   }
 
-  // if (!page) {
-  //   return {
-  //     redirect: {
-  //       destination: `${postType}?page=1`,
-  //       permanent: false,
-  //     },
-  //   };
-  // }
-
   const articles = await axios.get(newQuery);
 
   console.log(articles, "articles");
   const {
-    data: { count },
+    data: { count, pages },
   } = articles;
-
-  // if (!count) {
-  //   return {
-  //     redirect: {
-  //       destination: `/`,
-  //       permanent: false,
-  //     },
-  //   };
-  // }
 
   const taxonomies = await axios.get(
     `http://localhost:4000/taxonomies/cpt/${postType}`
@@ -63,6 +40,7 @@ export async function getServerSideProps({
     props: {
       articles: articles.data,
       postType,
+      pages,
       taxonomy: taxonomy || null,
       term: term || null,
       page: 1,

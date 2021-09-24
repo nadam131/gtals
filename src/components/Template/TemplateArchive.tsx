@@ -9,15 +9,16 @@ import {
   Grid,
   GridItem,
   Heading,
+  AspectRatio,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import Image from "next/image";
 
 import NavTaxonomies from "../../components/Nav/NavTaxonomies/NavTaxonomies";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
-const TemplateArchive = (props) => {
-  const { articles, pages: total, taxonomy, term } = props;
-
+const TemplateArchive = ({ articles, pages: total, taxonomy, term }) => {
+  console.log(total, "total");
   const router = useRouter();
   const {
     asPath,
@@ -34,11 +35,14 @@ const TemplateArchive = (props) => {
     fetcher
   );
 
-  const handlePageChange = () => {
-    router.push(`/${postType}?page=${Number(page || 1) + 1}`);
+  const handlePageChange = (page) => {
+    console.log(page, "page next");
+    router.push(`/${postType}?page=${page}`);
   };
 
   if (!data) return null;
+
+  const currentPage = Number(page);
 
   return (
     <div>
@@ -48,11 +52,9 @@ const TemplateArchive = (props) => {
       <Container mt={10} maxW="container.xxl">
         <Grid gap={6} templateColumns="repeat(12, 1fr)">
           {articles?.data?.map((article, i) => {
+            console.log(article, "article");
             return (
-              <GridItem
-                key={article.id}
-                gridColumn={`span ${i === 0 ? 7 : i === 1 ? 5 : 4}`}
-              >
+              <GridItem key={article.id} gridColumn={`span ${4}`}>
                 <Link href={`/${postType}/${article.slug}`}>
                   <a>
                     <Box
@@ -65,6 +67,13 @@ const TemplateArchive = (props) => {
                         borderColor: "primary",
                       }}
                     >
+                      <AspectRatio ratio={21 / 10}>
+                        <Image
+                          src={article.image}
+                          layout="fill"
+                          objectFit="cover"
+                        />
+                      </AspectRatio>
                       <Heading mt={5} size="md" as="h2">
                         {article.title}
                       </Heading>
@@ -76,12 +85,16 @@ const TemplateArchive = (props) => {
             );
           })}
         </Grid>
+        {total > 1 && (
+          <Box mt={10} pt={10} borderTop="2px" borderColor="gray.700">
+            <Paginator
+              pagesCount={total}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+          </Box>
+        )}
       </Container>
-      <Paginator
-        pagesCount={total}
-        currentPage={page}
-        onPageChange={handlePageChange}
-      />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <Flex direction="column" minH="100vh">
+    <Flex direction="column" minH="100vh" pb={10}>
       <Header />
       <Box flex={1}>{children}</Box>
     </Flex>
