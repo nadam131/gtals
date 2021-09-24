@@ -28,9 +28,8 @@ const Single: NextPage = () => {
     fetcher
   );
 
-  console.log(data, "data");
   if (!data) return null;
-  console.log(error, "error");
+
   return (
     <Container maxW="container.xxl">
       <Grid h="100vh" gap={10} templateColumns="repeat(12, 1fr)">
@@ -69,44 +68,3 @@ const Single: NextPage = () => {
 };
 
 export default Single;
-
-// import { useRouter } from 'next/router'
-// import React from 'react'
-// import { Element } from 'react-scroll'
-// import { api } from '../../api'
-// import Main from '../../components/Main'
-// import { POST_TYPES } from '../../constants'
-// import useFetch from '../../hooks/use-fetch'
-// import { TEMPLATES } from '../../templates'
-// import createBreadcrumbs from '../../utils/createBreadcrumbs'
-
-// const PagePost = () => {
-//     const {
-//         pathname,
-//         asPath: path,
-//         query: { postType },
-//     } = useRouter()
-
-//     console.log(pathname, 'pathname')
-//     console.log(postType, 'postType')
-//     console.log(path, 'path')
-
-//     const { fetchArticle } = useFetch()
-//     const { data, isLoading } = fetchArticle(path)
-
-//     if (isLoading) return null
-//     const breadcrumbs = [
-//         { name: POST_TYPES[postType].name, url: `/${postType}` },
-//     ]
-
-//     return (
-//         <Main title={data.title} breadcrumbs={breadcrumbs}>
-//             <Element name="Paginator">
-//                 {/* TODO Нужно это дело убрать в какую-то утилиту, чтобы нэйминг был понятнее */}
-//                 {React.createElement(TEMPLATES['single'], { data })}
-//             </Element>
-//         </Main>
-//     )
-// }
-
-// export default PagePost

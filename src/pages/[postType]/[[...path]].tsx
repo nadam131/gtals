@@ -27,7 +27,6 @@ export async function getServerSideProps({
 
   const articles = await axios.get(newQuery);
 
-  console.log(articles, "articles");
   const {
     data: { count, pages },
   } = articles;

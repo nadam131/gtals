@@ -18,7 +18,6 @@ import NavTaxonomies from "../../components/Nav/NavTaxonomies/NavTaxonomies";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const TemplateArchive = ({ articles, pages: total, taxonomy, term }) => {
-  console.log(total, "total");
   const router = useRouter();
   const {
     asPath,
@@ -36,7 +35,6 @@ const TemplateArchive = ({ articles, pages: total, taxonomy, term }) => {
   );
 
   const handlePageChange = (page) => {
-    console.log(page, "page next");
     router.push(`/${postType}?page=${page}`);
   };
 
@@ -52,7 +50,6 @@ const TemplateArchive = ({ articles, pages: total, taxonomy, term }) => {
       <Container mt={10} maxW="container.xxl">
         <Grid gap={6} templateColumns="repeat(12, 1fr)">
           {articles?.data?.map((article, i) => {
-            console.log(article, "article");
             return (
               <GridItem key={article.id} gridColumn={`span ${4}`}>
                 <Link href={`/${postType}/${article.slug}`}>

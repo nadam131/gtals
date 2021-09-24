@@ -5,8 +5,7 @@ import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 
 const Paginator = ({ pagesCount, onPageChange, currentPage, ...props }) => {
   const hasPrev = currentPage > 1;
-  console.log(currentPage, "currentPage");
-  console.log(pagesCount, "pagesCount");
+
   const hasNext = currentPage != pagesCount;
   return (
     <ReactPaginate

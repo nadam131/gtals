@@ -12,68 +12,63 @@ import type { NextPage } from "next";
 import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
+import { api, ENDPOINTS } from "../api";
+import { GridAside } from "../components/Grid/Grid";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
+// TODO Добавить статичный рендер
 const Home: NextPage = () => {
-  const { data, error } = useSWR(
-    "http://localhost:4000/articles/news/1",
-    fetcher
-  );
-
-  console.log(data?.data, "data");
+  const { data } = useSWR(`${ENDPOINTS["NESTJS"]}/articles/news/1`, api.get);
   if (!data) return null;
-  console.log(error, "error");
+
+  const renderAside = () => {
+    return "this is aside";
+  };
+
   return (
     <Container maxW="container.xxl">
-      <Grid h="100vh" gap={5} templateColumns="repeat(12, 1fr)">
-        <GridItem py={4} gridColumn="span 9">
-          <Skeleton isLoaded={data}>
-            {data?.data && (
-              <Grid gap={6} templateColumns="repeat(12, 1fr)">
-                {data.data.map((article, i) => {
-                  return (
-                    <GridItem
-                      key={article.id}
-                      gridColumn={`span ${i === 0 ? 7 : i === 1 ? 5 : 4}`}
-                    >
-                      <Link href={`/news/${article.slug}`}>
-                        <a>
-                          <Box
-                            p={4}
-                            h="100%"
-                            border="1px solid"
-                            borderColor="gray.700"
-                            transition="border-color .2s"
-                            _hover={{
-                              borderColor: "primary",
-                            }}
-                          >
-                            <AspectRatio ratio={16 / 9}>
-                              <Image
-                                src={article.image}
-                                layout="fill"
-                                objectFit="cover"
-                              />
-                            </AspectRatio>
-                            <Heading mt={5} size="md" as="h2">
-                              {article.title}
-                            </Heading>
-                            <Text mt={3}>{article.description}</Text>
-                          </Box>
-                        </a>
-                      </Link>
-                    </GridItem>
-                  );
-                })}
-              </Grid>
-            )}
-          </Skeleton>
-        </GridItem>
-        <GridItem p={4} borderLeft="1px" borderColor="gray.700">
-          <Box>Aside</Box>
-        </GridItem>
-      </Grid>
+      <GridAside aside={renderAside()}>
+        <Skeleton isLoaded={data}>
+          {data?.data && (
+            <Grid gap={6} templateColumns="repeat(12, 1fr)">
+              {data.data.map((article, i) => {
+                return (
+                  <GridItem
+                    key={article.id}
+                    gridColumn={`span ${i === 0 ? 7 : i === 1 ? 5 : 4}`}
+                  >
+                    <Link href={`/news/${article.slug}`}>
+                      <a>
+                        <Box
+                          p={4}
+                          h="100%"
+                          border="1px solid"
+                          borderColor="gray.700"
+                          transition="border-color .2s"
+                          _hover={{
+                            borderColor: "primary",
+                          }}
+                        >
+                          <AspectRatio ratio={16 / 9}>
+                            <Image
+                              src={article.image}
+                              layout="fill"
+                              objectFit="cover"
+                            />
+                          </AspectRatio>
+                          <Heading mt={5} size="md" as="h2">
+                            {article.title}
+                          </Heading>
+                          <Text mt={3}>{article.description}</Text>
+                        </Box>
+                      </a>
+                    </Link>
+                  </GridItem>
+                );
+              })}
+            </Grid>
+          )}
+        </Skeleton>
+      </GridAside>
     </Container>
   );
 };

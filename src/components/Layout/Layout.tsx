@@ -1,8 +1,12 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Grid, Box, Flex } from "@chakra-ui/react";
 import React from "react";
 import Header from "../Header/Header";
 
-const Layout: React.FC = ({ children }) => {
+interface ILayout {
+  children: any;
+}
+
+const Layout = ({ children }: ILayout) => {
   return (
     <Flex direction="column" minH="100vh" pb={10}>
       <Header />
