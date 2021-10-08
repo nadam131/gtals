@@ -15,45 +15,54 @@ import Link from "next/link";
 import Image from "next/image";
 
 import NavTaxonomies from "../../components/Nav/NavTaxonomies/NavTaxonomies";
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import { fetcher } from "../../api";
+import { ArticleProps } from "../../types";
 
-const TemplateArchive = ({ articles, pages: total, taxonomy, term }) => {
+interface TemplateArchiveProps {
+  pages: number;
+  postType: string;
+  url: string;
+}
+
+const TemplateArchive = ({
+  pages: total,
+  url,
+  postType,
+}: TemplateArchiveProps) => {
   const router = useRouter();
   const {
-    asPath,
-    query: { postType, page },
+    query: { page },
   } = router;
 
-  const { data, error } = useSWR(
-    `http://localhost:4000/articles/${postType}/${page || 1}`,
-    fetcher
-  );
+  const {
+    data: { data: articles },
+  } = useSWR(url, fetcher);
 
   const { data: taxonomies } = useSWR(
     `http://localhost:4000/taxonomies/cpt/${postType}`,
     fetcher
   );
 
-  const handlePageChange = (page) => {
+  if (!articles) return null;
+
+  const handlePageChange = (page: number) => {
     router.push(`/${postType}?page=${page}`);
   };
-
-  if (!data) return null;
 
   const currentPage = Number(page);
 
   return (
-    <div>
+    <Box>
       <Container mt={10} maxW="container.xxl">
         <NavTaxonomies filters={taxonomies.filters} />
       </Container>
       <Container mt={10} maxW="container.xxl">
         <Grid gap={6} templateColumns="repeat(12, 1fr)">
-          {articles?.data?.map((article, i) => {
+          {articles.map((article: ArticleProps) => {
             return (
               <GridItem key={article.id} gridColumn={`span ${4}`}>
-                <Link href={`/${postType}/${article.slug}`}>
-                  <a>
+                <Link href={`/${postType}/${article.slug}`} passHref>
+                  <Box as="a">
                     <Box
                       p={7}
                       h="100%"
@@ -69,6 +78,7 @@ const TemplateArchive = ({ articles, pages: total, taxonomy, term }) => {
                           src={article.image}
                           layout="fill"
                           objectFit="cover"
+                          alt={article.title}
                         />
                       </AspectRatio>
                       <Heading mt={5} size="md" as="h2">
@@ -76,7 +86,7 @@ const TemplateArchive = ({ articles, pages: total, taxonomy, term }) => {
                       </Heading>
                       <Text mt={3}>{article.description}</Text>
                     </Box>
-                  </a>
+                  </Box>
                 </Link>
               </GridItem>
             );
@@ -92,7 +102,7 @@ const TemplateArchive = ({ articles, pages: total, taxonomy, term }) => {
           </Box>
         )}
       </Container>
-    </div>
+    </Box>
   );
 };
 

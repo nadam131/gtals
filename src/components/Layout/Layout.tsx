@@ -8,7 +8,7 @@ interface ILayout {
 
 const Layout = ({ children }: ILayout) => {
   return (
-    <Flex direction="column" minH="100vh" pb={10}>
+    <Flex direction="column" minH="100vh">
       <Header />
       <Box flex={1}>{children}</Box>
     </Flex>

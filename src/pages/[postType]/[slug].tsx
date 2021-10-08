@@ -13,8 +13,7 @@ import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import { fetcher } from "../../api";
 
 const Single: NextPage = () => {
   const {

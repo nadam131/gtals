@@ -47,7 +47,7 @@ const NavTaxonomies = ({ filters: { radios, selects } }) => {
                   {s.options.map((option) => {
                     if (option.children.length) {
                       return (
-                        <optgroup label={option.label}>
+                        <optgroup key={option.id} label={option.label}>
                           {option.children.map((child) => {
                             return (
                               <option key={child.id} value={child.value}>

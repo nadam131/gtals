@@ -1,23 +1,50 @@
 import React from "react";
 import { SWRConfig } from "swr";
 
-import axios from "axios";
 import TemplateArchive from "../../components/Template/TemplateArchive";
+import { fetcher } from "../../api";
 
-const PageArchives = ({ fallback, ...props }) => {
+interface PageArchiveProps {
+  fallback: any;
+  pages: number;
+  postType: string;
+  url: string;
+}
+interface ServerSideProps {
+  query: {
+    postType: string;
+    path: string;
+    page: number;
+  };
+}
+
+const PageArchives = ({ fallback, pages, postType, url }: PageArchiveProps) => {
   return (
-    <SWRConfig value={{ fallback }}>
-      <TemplateArchive {...props} />
+    <SWRConfig
+      value={{
+        fallback,
+        onError: async (error: any) => {
+          if (error.status !== 403 && error.status !== 404) {
+            const error = new Error(
+              "An error occurred while fetching the data."
+            );
+            throw error;
+          }
+        },
+      }}
+    >
+      <TemplateArchive postType={postType} pages={pages} url={url} />
     </SWRConfig>
   );
 };
 
 export async function getServerSideProps({
   query: { postType, page = 1, path },
-}) {
-  let newQuery = "";
+}: ServerSideProps) {
   const taxonomy = path?.[0];
   const term = path?.[1];
+
+  let newQuery = "";
 
   if (taxonomy && term) {
     newQuery = `http://localhost:4000/articles/${postType}/${taxonomy}/${term}/${page}`;
@@ -25,18 +52,18 @@ export async function getServerSideProps({
     newQuery = `http://localhost:4000/articles/${postType}/${page}`;
   }
 
-  const articles = await axios.get(newQuery);
+  const articles = await fetcher(newQuery);
 
-  const {
-    data: { count, pages },
-  } = articles;
+  if (!articles) return null;
 
-  const taxonomies = await axios.get(
+  const { pages } = articles;
+  const taxonomies = await fetcher(
     `http://localhost:4000/taxonomies/cpt/${postType}`
   );
 
   return {
     props: {
+      url: newQuery,
       articles: articles.data,
       postType,
       pages,
@@ -44,8 +71,8 @@ export async function getServerSideProps({
       term: term || null,
       page: 1,
       fallback: {
-        [`http://localhost:4000/articles/${postType}/${page}`]: articles.data,
-        [`http://localhost:4000/taxonomies/cpt/${postType}`]: taxonomies.data,
+        [`${newQuery}`]: articles,
+        [`http://localhost:4000/taxonomies/cpt/${postType}`]: taxonomies,
       },
     },
   };
