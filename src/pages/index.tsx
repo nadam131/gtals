@@ -1,15 +1,14 @@
 import { Container, Button } from "@chakra-ui/react";
-import type { NextPage } from "next";
-import useSWR from "swr";
-import { api, ENDPOINTS } from "../api";
+import type { GetStaticProps } from "next";
+import { ENDPOINTS, fetcher } from "../api";
 import { GridAside } from "../components/Grid/Grid";
 import GridArticles from "../components/Grid/GridArticles";
 
-// TODO Добавить статичный рендер
-const Home: NextPage = () => {
-  const { data } = useSWR(`${ENDPOINTS["NESTJS"]}/articles/news/1`, api.get);
-  if (!data) return null;
+interface HomePageProps {
+  articles: any;
+}
 
+const HomePage = ({ articles }: HomePageProps) => {
   const renderAside = () => {
     return "this is aside";
   };
@@ -17,7 +16,7 @@ const Home: NextPage = () => {
   return (
     <Container maxW="container.xxl">
       <GridAside aside={renderAside()}>
-        <GridArticles articles={data.data} />
+        <GridArticles articles={articles} />
         <Button
           w="100%"
           variant="outline"
@@ -35,4 +34,17 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export const getStaticProps: GetStaticProps = async () => {
+  const { data: articles } = await fetcher(
+    `${ENDPOINTS["NESTJS"]}/articles/news/1`
+  );
+
+  return {
+    props: {
+      articles,
+    },
+    revalidate: 500,
+  };
+};
+
+export default HomePage;

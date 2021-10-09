@@ -12,20 +12,17 @@ const styles = {
   },
 };
 
-const NAVMAINPROPS = {
-  className: "nav-main",
-  data: [
-    { id: 1, name: "Игры", url: "/games?page=1" },
-    { id: 2, name: "Новости", url: "/news?page=1" },
-    { id: 3, name: "Faq", url: "/faq" },
-    { id: 4, name: "Гайды", url: "/guides" },
-    { id: 5, name: "Чит-коды", url: "/cheats" },
-    { id: 6, name: "Радио", url: "/radio" },
-    { id: 7, name: "Персонажи", url: "/characters" },
-    { id: 8, name: "Транспорт", url: "/vehicles" },
-    { id: 9, name: "GTA 6", url: "/games/gta-6" },
-  ],
-};
+const MENU = [
+  { id: 1, name: "Игры", url: "/games?page=1" },
+  { id: 2, name: "Новости", url: "/news?page=1" },
+  { id: 3, name: "Faq", url: "/faq" },
+  { id: 4, name: "Гайды", url: "/guides" },
+  { id: 5, name: "Чит-коды", url: "/cheats" },
+  { id: 6, name: "Радио", url: "/radio" },
+  { id: 7, name: "Персонажи", url: "/characters" },
+  { id: 8, name: "Транспорт", url: "/vehicles" },
+  { id: 9, name: "GTA 6", url: "/games/gta-6" },
+];
 
 const Header: React.FC = () => {
   return (
@@ -37,7 +34,7 @@ const Header: React.FC = () => {
               <Logo />
             </a>
           </Link>
-          <NavMain list={NAVMAINPROPS.data} />
+          <NavMain list={MENU} />
         </HStack>
       </Container>
     </Box>

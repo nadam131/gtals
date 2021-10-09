@@ -2,11 +2,11 @@ import { Box, HStack } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
 
-const NavMain = ({
-  list,
-}: {
-  list: [{ id: number; name: string; url: string }];
-}) => {
+interface NavMainProps {
+  list: { id: number; name: string; url: string }[];
+}
+
+const NavMain = ({ list }: NavMainProps) => {
   return (
     <HStack
       fontSize="1xl"

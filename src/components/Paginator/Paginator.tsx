@@ -1,12 +1,37 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import ReactPaginate from "react-paginate";
 import { Button } from "@chakra-ui/button";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 
-const Paginator = ({ pagesCount, onPageChange, currentPage, ...props }) => {
-  const hasPrev = currentPage > 1;
+interface PaginatorProps {
+  pagesCount: number;
+  currentPage: number;
+  onPageChange: (page: number) => any;
+}
 
+const Paginator = ({
+  pagesCount,
+  onPageChange,
+  currentPage,
+}: PaginatorProps) => {
+  const hasPrev = currentPage > 1;
   const hasNext = currentPage != pagesCount;
+
+  const pageRenderer = (page: number): ReactElement => {
+    return (
+      <Button
+        onClick={() => onPageChange(page)}
+        variant="outline"
+        _hover={{
+          color: "primary.500",
+          borderColor: "primary.500",
+        }}
+      >
+        {page}
+      </Button>
+    );
+  };
+
   return (
     <ReactPaginate
       containerClassName="react-paginate-container"
@@ -44,20 +69,7 @@ const Paginator = ({ pagesCount, onPageChange, currentPage, ...props }) => {
         ) : null
       }
       breakLabel={<Button variant="outline">...</Button>}
-      pageLabelBuilder={(page: number) => {
-        return (
-          <Button
-            onClick={() => onPageChange(page)}
-            variant="outline"
-            _hover={{
-              color: "primary.500",
-              borderColor: "primary.500",
-            }}
-          >
-            {page}
-          </Button>
-        );
-      }}
+      // pageLabelBuilder={(page: number) => pageRenderer(page)}
     />
   );
 };

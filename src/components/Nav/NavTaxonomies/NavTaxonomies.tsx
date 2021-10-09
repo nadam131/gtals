@@ -2,11 +2,20 @@ import { Box, Button, ButtonGroup, HStack, Select } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 
-const NavTaxonomies = ({ filters: { radios, selects } }) => {
+interface NavTaxonomiesProps {
+  filters: {
+    radios: any[];
+    selects: any[];
+  };
+}
+
+const NavTaxonomies = ({
+  filters: { radios, selects },
+}: NavTaxonomiesProps) => {
   const router = useRouter();
   const { asPath } = router;
 
-  const handleFilterChange = (e) => {
+  const handleFilterChange = (e: any) => {
     router.push(e.target?.value || e);
   };
 
@@ -44,11 +53,11 @@ const NavTaxonomies = ({ filters: { radios, selects } }) => {
                   value={asPath}
                   onChange={handleFilterChange}
                 >
-                  {s.options.map((option) => {
+                  {s.options.map((option: any) => {
                     if (option.children.length) {
                       return (
                         <optgroup key={option.id} label={option.label}>
-                          {option.children.map((child) => {
+                          {option.children.map((child: any) => {
                             return (
                               <option key={child.id} value={child.value}>
                                 {child.label}
