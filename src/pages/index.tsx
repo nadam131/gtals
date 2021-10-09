@@ -18,9 +18,8 @@ const HomePage = ({ articles }: HomePageProps) => {
       <GridAside aside={renderAside()}>
         <GridArticles articles={articles} />
         <Button
-          w="100%"
+          isFullWidth
           variant="outline"
-          colorScheme="primary"
           mt={8}
           _hover={{
             color: "primary.500",
