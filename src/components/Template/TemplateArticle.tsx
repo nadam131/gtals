@@ -1,37 +1,35 @@
-import React from "react";
-import { useRouter } from "next/router";
-import useSWR from "swr";
-import Paginator from "../Paginator/Paginator";
-import {
-  Box,
-  Text,
-  Container,
-  Grid,
-  GridItem,
-  Heading,
-  AspectRatio,
-} from "@chakra-ui/react";
-import Link from "next/link";
-import Image from "next/image";
+import { Container } from "@chakra-ui/layout";
+import { useFetch } from "../../hooks/use-fetch";
 
-import NavTaxonomies from "../Nav/NavTaxonomies/NavTaxonomies";
-import { fetcher } from "../../api";
-import { ArticleProps } from "../../types";
-import { useFetchArticle } from "../../hooks/use-fetch";
+import React from "react";
+import { GridAside } from "../Grid/Grid";
+import PostAside from "../Post/PostAside/PostAside";
 
 interface TemplateArticleProps {
-  postTypeSlug: string;
-  postSlug: string;
+  url: string;
 }
 
-const TemplateArticle = ({ postTypeSlug, postSlug }: TemplateArticleProps) => {
-  const article = useFetchArticle(postTypeSlug, postSlug);
+const TemplateArticle = ({ url }: TemplateArticleProps) => {
+  const { data: post } = useFetch(url);
 
-  console.log(article, "article");
-
-  if (!article) return null;
-
-  return <Box>asd</Box>;
+  console.log(post, "post");
+  return (
+    <Container maxW="container.xxl">
+      <GridAside
+        inverted
+        aside={
+          <PostAside
+            image={post.fields.post_main_img}
+            title={post.title}
+            color={post.fields.post_color}
+            info={post.fields.post_info}
+          />
+        }
+      >
+        {post.title}
+      </GridAside>
+    </Container>
+  );
 };
 
 export default TemplateArticle;

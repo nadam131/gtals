@@ -52,8 +52,8 @@ const TemplateArchive = ({
   const currentPage = Number(page);
 
   return (
-    <Box>
-      <Container mt={10} maxW="container.xxl">
+    <Box pt={6}>
+      <Container maxW="container.xxl">
         <NavTaxonomies filters={taxonomies.filters} />
       </Container>
       <Container mt={10} maxW="container.xxl">
