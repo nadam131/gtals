@@ -1,0 +1,33 @@
+.gta-paragraph br {
+  display: none;
+}
+
+.gta-paragraph h1,
+.gta-paragraph h2,
+.gta-paragraph h3,
+.gta-paragraph h4 {
+  color: #fff;
+  font-family: var(--chakra-fonts-heading);
+}
+
+.gta-paragraph p {
+  color: #fff;
+  line-height: 1.75;
+  font-family: var(--chakra-fonts-body);
+}
+
+.gta-paragraph a {
+  color: var(--chakra-colors-primary-500);
+}
+
+.gta-paragraph ul {
+  margin-top: 20px;
+}
+
+.gta-paragraph ul li {
+  color: #fff;
+}
+
+.gta-list__item br {
+  display: none;
+}
