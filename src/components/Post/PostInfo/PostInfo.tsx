@@ -9,7 +9,7 @@ interface PostInfoProps {
 const PostInfo = ({ list }: PostInfoProps) => {
   return (
     <Hidder>
-      <VStack spacing={5}>
+      <VStack className="post-info" spacing={5}>
         {list.map((el: any) => {
           return (
             <VStack
@@ -21,7 +21,10 @@ const PostInfo = ({ list }: PostInfoProps) => {
               <Heading as="h6" size="sm">
                 {el.post_info_title}
               </Heading>
-              <Box dangerouslySetInnerHTML={{ __html: el.post_info_text }} />
+              <Box
+                className="post-info__text"
+                dangerouslySetInnerHTML={{ __html: el.post_info_text }}
+              />
             </VStack>
           );
         })}
