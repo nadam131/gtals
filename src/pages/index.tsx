@@ -36,6 +36,10 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       articles,
+      meta: {
+        title: "Главная страница",
+        description: "Ну это описание",
+      },
     },
     revalidate: 500,
   };
