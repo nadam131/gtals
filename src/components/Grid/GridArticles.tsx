@@ -2,6 +2,7 @@ import { Grid, GridItem, Link } from "@chakra-ui/layout";
 import React from "react";
 import { ArticleProps } from "../../types";
 import CardArticle from "../Card/CardArticle/CardArticle";
+import CardArticleL from "../Card/CardArticle/CardArticleL";
 import CardSkeleton from "../Card/CardSkeleton/CardSkeleton";
 
 interface GridArticlesProps {
@@ -23,16 +24,22 @@ const renderSkeletons = () => {
 
 const GridArticles = ({ articles }: GridArticlesProps) => {
   return (
-    <Grid gap={6} templateColumns="repeat(12, 1fr)">
+    <Grid w="100%" columnGap={5} rowGap={6} templateColumns="repeat(12, 1fr)">
       {!articles && renderSkeletons()}
       {articles &&
-        articles.map((article: ArticleProps) => {
+        articles.map((article: ArticleProps, i: number) => {
+          const isMarked = i === 0 || i % 4 === 0;
+          const gridColumn = isMarked ? "span 12" : "span 4";
+          const component = isMarked ? (
+            <CardArticleL article={article} />
+          ) : (
+            <CardArticle article={article} />
+          );
+
           return (
-            <GridItem key={article.id} gridColumn="span 4">
+            <GridItem key={article.id} gridColumn={gridColumn}>
               <Link href={`/news/${article.slug}`}>
-                <a>
-                  <CardArticle article={article} />
-                </a>
+                <a>{component}</a>
               </Link>
             </GridItem>
           );

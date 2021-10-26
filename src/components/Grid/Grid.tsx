@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem } from "@chakra-ui/layout";
+import { Grid, GridItem } from "@chakra-ui/layout";
 
 interface IGrid {
   children: any;
@@ -6,9 +6,8 @@ interface IGrid {
   inverted?: boolean;
 }
 
-export const GridAside = ({ children, aside, inverted }: IGrid) => {
+export const GridAside = ({ children, aside, inverted, ...props }: IGrid) => {
   const asideStyles = {
-    py: 6,
     px: inverted ? 6 : 0,
     pl: inverted ? 0 : 6,
     gridColumn: inverted ? "1/span 3" : "span 3",
@@ -23,8 +22,9 @@ export const GridAside = ({ children, aside, inverted }: IGrid) => {
       gap={6}
       gridAutoFlow={inverted ? "dense" : ""}
       templateColumns="repeat(12, 1fr)"
+      {...props}
     >
-      <GridItem py={6} gridColumn={inverted ? "4/span 9" : "span 9"}>
+      <GridItem gridColumn={inverted ? "4/span 9" : "span 9"}>
         {children}
       </GridItem>
       <GridItem {...asideStyles}>{aside}</GridItem>
