@@ -1,21 +1,6 @@
-import {
-  AspectRatio,
-  Box,
-  Container,
-  Grid,
-  GridItem,
-  Heading,
-  Skeleton,
-  Text,
-} from "@chakra-ui/react";
-import type { NextPage } from "next";
-import useSWR, { SWRConfig } from "swr";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import { SWRConfig } from "swr";
 import { ENDPOINTS, fetcher } from "../../api";
 import TemplateArticle from "../../components/Template/TemplateArticle";
-import { useFetch } from "../../hooks/use-fetch";
 
 interface ServerSideProps {
   query: {
