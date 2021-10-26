@@ -10,10 +10,13 @@ interface CardArticleProps {
 const CardArticle = ({ article }: CardArticleProps) => {
   return (
     <Box
-      p={4}
+      p={6}
       h="100%"
       border="1px solid"
-      borderColor="gray.700"
+      borderColor="gray.600"
+      boxShadow="md"
+      rounded="lg"
+      overflow="hidden"
       transition="border-color .2s"
       _hover={{
         borderColor: "primary",
