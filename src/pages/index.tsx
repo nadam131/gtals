@@ -2,8 +2,8 @@ import { Container, VStack } from "@chakra-ui/react";
 import type { GetStaticProps } from "next";
 import { ENDPOINTS, fetcher } from "../api";
 import CardArticle from "../components/Card/CardArticle/CardArticle";
+import FeedMain from "../components/Feed/FeedMain/FeedMain";
 import { GridAside } from "../components/Grid/Grid";
-import GridArticles from "../components/Grid/GridArticles";
 
 interface HomePageProps {
   articles: any;
@@ -21,24 +21,9 @@ const HomePage = ({ articles }: HomePageProps) => {
 
   return (
     <Container maxW="container.xxl">
-      <VStack mt={6} spacing={6}>
-        <GridArticles articles={articles.slice(0, 3)} />
-        {/* <GridAside aside={renderAside()}>
-          <GridArticles articles={articles.slice(0, 6)} />
-        </GridAside> */}
-      </VStack>
-
-      {/* <Button
-        isFullWidth
-        variant="outline"
-        mt={8}
-        _hover={{
-          color: "primary.500",
-          borderColor: "primary.500",
-        }}
-      >
-        Больше новостей
-      </Button> */}
+      <GridAside aside={renderAside()}>
+        <FeedMain articles={articles} />
+      </GridAside>
     </Container>
   );
 };
