@@ -16,10 +16,13 @@ import "../styles/magnific/magnific-popup.css";
 
 import Script from "next/script";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { meta } = pageProps;
   return (
     <>
+      <NextSeo {...meta} />
       <Head>
         <link
           rel="stylesheet"
