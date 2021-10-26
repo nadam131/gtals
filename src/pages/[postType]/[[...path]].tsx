@@ -65,7 +65,7 @@ export async function getServerSideProps({
     props: {
       url: newQuery,
       postType,
-      pages,
+      pages: pages || null,
       fallback: {
         [`${newQuery}`]: articles,
         [`http://localhost:4000/taxonomies/cpt/${postType}`]: taxonomies,
