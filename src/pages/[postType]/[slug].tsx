@@ -19,6 +19,7 @@ interface PostPageProps {
 
 const TEMPLATES: { [key: string]: any } = {
   news: TemplateNews,
+  editor: TemplateNews,
 };
 
 const PostPage = ({ postType, url, fallback }: PostPageProps) => {
