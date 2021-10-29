@@ -1,6 +1,7 @@
 import { Button } from "@chakra-ui/button";
 import { useBoolean } from "@chakra-ui/hooks";
-import { Box, Heading } from "@chakra-ui/layout";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Box } from "@chakra-ui/layout";
 import React from "react";
 
 interface HidderProps {
@@ -12,7 +13,7 @@ interface HidderProps {
 const Hidder = ({
   minHeight = 500,
   children,
-  buttonText = "Показать все",
+  buttonText = "Развернуть",
 }: HidderProps) => {
   const [isOpen, setIsOpen] = useBoolean(false);
   const height = isOpen ? "100%" : minHeight;
@@ -27,8 +28,8 @@ const Hidder = ({
           bgGradient={gradient}
           position="absolute"
           w="100%"
-          h="100%"
-          top={0}
+          h="20%"
+          bottom={0}
           zIndex={2}
         />
       </Box>
@@ -38,8 +39,10 @@ const Hidder = ({
           size="sm"
           variant="outline"
           isFullWidth
+          borderColor="gray.700"
           _hover={{ color: "primary.500", borderColor: "primary.500" }}
           onClick={setIsOpen.on}
+          leftIcon={<ChevronDownIcon />}
         >
           {buttonText}
         </Button>

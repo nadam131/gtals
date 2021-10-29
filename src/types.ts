@@ -3,6 +3,7 @@ export interface ArticleProps {
   slug: string;
   date: string;
   link: string;
+  type: string;
   title: string;
   description: string;
   image: string;

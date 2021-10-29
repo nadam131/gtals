@@ -1,6 +1,8 @@
+import React from "react";
 import { SWRConfig } from "swr";
 import { ENDPOINTS, fetcher } from "../../api";
 import TemplateArticle from "../../components/Template/TemplateArticle";
+import TemplateNews from "../../components/Template/TemplateNews";
 
 interface ServerSideProps {
   query: {
@@ -10,18 +12,24 @@ interface ServerSideProps {
 }
 
 interface PostPageProps {
+  postType: string;
   url: string;
   fallback: any;
 }
 
-const PostPage = ({ url, fallback }: PostPageProps) => {
+const TEMPLATES: { [key: string]: any } = {
+  news: TemplateNews,
+};
+
+const PostPage = ({ postType, url, fallback }: PostPageProps) => {
+  const template = TEMPLATES[postType] || TemplateArticle;
   return (
     <SWRConfig
       value={{
         fallback,
       }}
     >
-      <TemplateArticle url={url} />
+      {React.createElement(template, { url })}
     </SWRConfig>
   );
 };
@@ -34,6 +42,7 @@ export async function getServerSideProps({
 
   return {
     props: {
+      postType,
       url,
       post,
       fallback: {

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import ReactPaginate from "react-paginate";
 import { Button } from "@chakra-ui/button";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
@@ -6,31 +6,31 @@ import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 interface PaginatorProps {
   pagesCount: number;
   currentPage: number;
-  onPageChange: (page: number) => any;
+  onPageChange: () => any;
 }
 
 const Paginator = ({
   pagesCount,
-  onPageChange,
+  // onPageChange,
   currentPage,
 }: PaginatorProps) => {
   const hasPrev = currentPage > 1;
   const hasNext = currentPage != pagesCount;
 
-  const pageRenderer = (page: number): ReactElement => {
-    return (
-      <Button
-        onClick={() => onPageChange(page)}
-        variant="outline"
-        _hover={{
-          color: "primary.500",
-          borderColor: "primary.500",
-        }}
-      >
-        {page}
-      </Button>
-    );
-  };
+  // const pageRenderer = (page: number): ReactElement => {
+  //   return (
+  //     <Button
+  //       onClick={() => onPageChange(page)}
+  //       variant="outline"
+  //       _hover={{
+  //         color: "primary.500",
+  //         borderColor: "primary.500",
+  //       }}
+  //     >
+  //       {page}
+  //     </Button>
+  //   );
+  // };
 
   return (
     <ReactPaginate
@@ -42,7 +42,7 @@ const Paginator = ({
         hasPrev ? (
           <Button
             leftIcon={<ArrowBackIcon />}
-            onClick={() => onPageChange(currentPage - 1)}
+            // onClick={() => onPageChange(currentPage - 1)}
             variant="outline"
             _hover={{
               color: "primary.500",
@@ -58,7 +58,7 @@ const Paginator = ({
           <Button
             rightIcon={<ArrowForwardIcon />}
             variant="outline"
-            onClick={() => onPageChange(currentPage + 1)}
+            // onClick={() => onPageChange(currentPage + 1)}
             _hover={{
               color: "primary.500",
               borderColor: "primary.500",

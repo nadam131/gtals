@@ -3,13 +3,12 @@ import { useFetch } from "../../hooks/use-fetch";
 
 import React from "react";
 import { GridAside } from "../Grid/Grid";
-import PostAside from "../Post/PostAside/PostAside";
 
-interface TemplateArticleProps {
+interface TemplateNewsProps {
   url: string;
 }
 
-const TemplateArticle = ({ url }: TemplateArticleProps) => {
+const TemplateNews = ({ url }: TemplateNewsProps) => {
   const { data: post } = useFetch(url);
 
   return (
@@ -25,16 +24,7 @@ const TemplateArticle = ({ url }: TemplateArticleProps) => {
       >
         {post.title}
       </Heading>
-      <GridAside
-        inverted
-        aside={
-          <PostAside
-            image={post.image}
-            title={post.title}
-            info={post.fields.post_info}
-          />
-        }
-      >
+      <GridAside aside={"asd"}>
         <Box
           className="post-content"
           dangerouslySetInnerHTML={{ __html: post.content }}
@@ -44,4 +34,4 @@ const TemplateArticle = ({ url }: TemplateArticleProps) => {
   );
 };
 
-export default TemplateArticle;
+export default TemplateNews;

@@ -1,5 +1,6 @@
-import { Grid, GridItem, Link } from "@chakra-ui/layout";
+import { Grid, GridItem } from "@chakra-ui/layout";
 import React from "react";
+import Link from "next/link";
 import { ArticleProps } from "../../types";
 import CardArticle from "../Card/CardArticle/CardArticle";
 import CardArticleL from "../Card/CardArticle/CardArticleL";
@@ -23,6 +24,7 @@ const renderSkeletons = () => {
 };
 
 const GridArticles = ({ articles }: GridArticlesProps) => {
+  console.log(articles, "articles");
   return (
     <Grid w="100%" columnGap={5} rowGap={6} templateColumns="repeat(12, 1fr)">
       {!articles && renderSkeletons()}
@@ -38,7 +40,7 @@ const GridArticles = ({ articles }: GridArticlesProps) => {
 
           return (
             <GridItem key={article.id} gridColumn={gridColumn}>
-              <Link href={`/news/${article.slug}`}>
+              <Link href={`/${article.type}/${article.slug}`}>
                 <a>{component}</a>
               </Link>
             </GridItem>

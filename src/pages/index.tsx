@@ -1,9 +1,11 @@
-import { Container, VStack } from "@chakra-ui/react";
+import { Container, VStack, StackDivider } from "@chakra-ui/react";
 import type { GetStaticProps } from "next";
+import Link from "next/link";
 import { ENDPOINTS, fetcher } from "../api";
-import CardArticle from "../components/Card/CardArticle/CardArticle";
+import { CardArticleS } from "../components/Card/CardArticle/CardArticleS";
 import FeedMain from "../components/Feed/FeedMain/FeedMain";
 import { GridAside } from "../components/Grid/Grid";
+import { ArticleProps } from "../types";
 
 interface HomePageProps {
   articles: any;
@@ -12,9 +14,18 @@ interface HomePageProps {
 const HomePage = ({ articles }: HomePageProps) => {
   const renderAside = () => {
     return (
-      <VStack spacing={6}>
-        <CardArticle article={articles[0]}></CardArticle>
-        <CardArticle article={articles[0]}></CardArticle>
+      <VStack
+        divider={<StackDivider borderColor="gray.600" />}
+        mt={10}
+        spacing={6}
+      >
+        {articles.map((article: ArticleProps) => (
+          <Link key={article.id} href={`/${article.type}/${article.slug}`}>
+            <a>
+              <CardArticleS article={article} />
+            </a>
+          </Link>
+        ))}
       </VStack>
     );
   };
