@@ -10,6 +10,7 @@ import "@fontsource/open-sans/700.css";
 
 import "../components/Paginator/Paginator.css";
 import "../components/Post/PostInfo/PostInfo.css";
+import "../styles/guttenberg/styles.scss";
 import "../styles/style.css";
 import "../styles/gta-editor.css";
 import "../styles/magnific/magnific-popup.css";
