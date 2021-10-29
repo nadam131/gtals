@@ -16,17 +16,14 @@ interface CardArticleLProps {
 
 const CardArticleL = ({ article }: CardArticleLProps) => {
   return (
-    <Box bgColor="gray.700" boxShadow="lg" py={10} pl={0} rounded="lg">
+    <Box bgColor="gray.700" boxShadow="lg" p={8} py={10} rounded="lg">
       <Grid gridTemplateColumns="repeat(12,1fr)" gap={14} alignItems="center">
         <GridItem gridColumn="span 5" overflow="hidden">
           <AspectRatio
-            border="3px solid"
-            borderColor="white"
             ratio={16 / 9}
             rounded="lg"
             boxShadow="lg"
             overflow="hidden"
-            ml={-2}
           >
             <Image
               src={article.image}
