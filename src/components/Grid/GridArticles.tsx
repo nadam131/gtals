@@ -1,4 +1,4 @@
-import { BoxProps, Grid, GridItem } from "@chakra-ui/layout";
+import { BoxProps, Grid, GridItem, Link as CLink } from "@chakra-ui/layout";
 import React from "react";
 import Link from "next/link";
 import { ArticleProps } from "../../types";
@@ -37,7 +37,14 @@ const GridArticles = ({ articles, ...props }: GridArticlesProps) => {
           return (
             <GridItem key={article.id} gridColumn="span 4">
               <Link passHref href={`/${article.type}/${article.slug}`}>
-                <CardArticle article={article} />
+                <CLink
+                  transition="color .2s"
+                  _hover={{
+                    color: "primary.500",
+                  }}
+                >
+                  <CardArticle article={article} />
+                </CLink>
               </Link>
             </GridItem>
           );

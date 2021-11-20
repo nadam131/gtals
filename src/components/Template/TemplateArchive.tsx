@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { Box, Container } from "@chakra-ui/react";
 
 import NavTaxonomies from "../../components/Nav/NavTaxonomies/NavTaxonomies";
-import { fetcher } from "../../api";
+import { ENDPOINTS, fetcher } from "../../api";
 import GridArticles from "../Grid/GridArticles";
 
 interface TemplateArchiveProps {
@@ -18,7 +18,7 @@ const TemplateArchive = ({ url, postType }: TemplateArchiveProps) => {
   } = useSWR(url, fetcher);
 
   const { data: taxonomies } = useSWR(
-    `http://localhost:4000/taxonomies/cpt/${postType}`,
+    `${ENDPOINTS.NESTJS}/taxonomies/cpt/${postType}`,
     fetcher
   );
 

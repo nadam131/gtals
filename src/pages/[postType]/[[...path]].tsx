@@ -2,7 +2,7 @@ import React from "react";
 import { SWRConfig } from "swr";
 
 import TemplateArchive from "../../components/Template/TemplateArchive";
-import { fetcher } from "../../api";
+import { ENDPOINTS, fetcher } from "../../api";
 
 interface PageArchiveProps {
   fallback: any;
@@ -47,9 +47,9 @@ export async function getServerSideProps({
   let newQuery = "";
 
   if (taxonomy && term) {
-    newQuery = `http://localhost:4000/articles/${postType}/${taxonomy}/${term}/${page}`;
+    newQuery = `${ENDPOINTS.NESTJS}/articles/${postType}/${taxonomy}/${term}/${page}`;
   } else {
-    newQuery = `http://localhost:4000/articles/${postType}/${page}`;
+    newQuery = `${ENDPOINTS.NESTJS}/articles/${postType}/${page}`;
   }
 
   const articles = await fetcher(newQuery);
@@ -58,7 +58,7 @@ export async function getServerSideProps({
 
   const { pages } = articles;
   const taxonomies = await fetcher(
-    `http://localhost:4000/taxonomies/cpt/${postType}`
+    `${ENDPOINTS.NESTJS}/taxonomies/cpt/${postType}`
   );
 
   return {
@@ -68,7 +68,7 @@ export async function getServerSideProps({
       pages: pages || null,
       fallback: {
         [`${newQuery}`]: articles,
-        [`http://localhost:4000/taxonomies/cpt/${postType}`]: taxonomies,
+        [`${ENDPOINTS.NESTJS}/taxonomies/cpt/${postType}`]: taxonomies,
       },
     },
   };

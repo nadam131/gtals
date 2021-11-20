@@ -15,7 +15,7 @@ const CardArticle = ({ article }: CardArticleProps) => {
       overflow={"hidden"}
     >
       <Box pos={"relative"}>
-        <AspectRatio ratio={21 / 10}>
+        <AspectRatio ratio={245 / 157}>
           <Image
             src={article.image}
             layout="fill"
@@ -27,9 +27,10 @@ const CardArticle = ({ article }: CardArticleProps) => {
       <Stack p={7}>
         <Text
           textTransform={"uppercase"}
-          fontWeight={800}
+          color={"gray.400"}
           fontSize={"xs"}
           letterSpacing={1.1}
+          mb={1}
         >
           Новости
         </Text>
