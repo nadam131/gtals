@@ -24,7 +24,6 @@ const renderSkeletons = () => {
 };
 
 const GridArticles = ({ articles }: GridArticlesProps) => {
-  console.log(articles, "articles");
   return (
     <Grid w="100%" columnGap={5} rowGap={6} templateColumns="repeat(12, 1fr)">
       {!articles && renderSkeletons()}

@@ -11,7 +11,6 @@ interface PostAsideProps {
 }
 
 const PostAside = ({ image, title, info }: PostAsideProps) => {
-  console.log(info, "info");
   return (
     <>
       <Box>
