@@ -24,4 +24,4 @@ jobs:
       - name: Build
         run: |
           yarn install
-          npm run check
+          yarn run check
