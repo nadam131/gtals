@@ -1,12 +1,11 @@
-import { Grid, GridItem } from "@chakra-ui/layout";
+import { BoxProps, Grid, GridItem } from "@chakra-ui/layout";
 import React from "react";
 import Link from "next/link";
 import { ArticleProps } from "../../types";
 import CardArticle from "../Card/CardArticle/CardArticle";
-import CardArticleL from "../Card/CardArticle/CardArticleL";
 import CardSkeleton from "../Card/CardSkeleton/CardSkeleton";
 
-interface GridArticlesProps {
+interface GridArticlesProps extends BoxProps {
   articles: ArticleProps[];
 }
 
@@ -23,24 +22,22 @@ const renderSkeletons = () => {
   });
 };
 
-const GridArticles = ({ articles }: GridArticlesProps) => {
+const GridArticles = ({ articles, ...props }: GridArticlesProps) => {
   return (
-    <Grid w="100%" columnGap={5} rowGap={6} templateColumns="repeat(12, 1fr)">
+    <Grid
+      w="100%"
+      columnGap={5}
+      rowGap={6}
+      templateColumns="repeat(12, 1fr)"
+      {...props}
+    >
       {!articles && renderSkeletons()}
       {articles &&
-        articles.map((article: ArticleProps, i: number) => {
-          const isMarked = i === 0 || i % 4 === 0;
-          const gridColumn = isMarked ? "span 12" : "span 4";
-          const component = isMarked ? (
-            <CardArticleL article={article} />
-          ) : (
-            <CardArticle article={article} />
-          );
-
+        articles.map((article: ArticleProps) => {
           return (
-            <GridItem key={article.id} gridColumn={gridColumn}>
-              <Link href={`/${article.type}/${article.slug}`}>
-                <a>{component}</a>
+            <GridItem key={article.id} gridColumn="span 4">
+              <Link passHref href={`/${article.type}/${article.slug}`}>
+                <CardArticle article={article} />
               </Link>
             </GridItem>
           );
