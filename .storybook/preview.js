@@ -1,4 +1,4 @@
-import { theme } from "../src/theme.ts";
+import theme from "../src/theme";
 
 export const parameters = {
   layout: "fullscreen",
