@@ -1,4 +1,4 @@
-name: Installing new packages
+name: Checks
 
 on:
   pull_request:
@@ -24,3 +24,4 @@ jobs:
     - name: Build
       run: |
         npm ci
+        npm run check
