@@ -18,6 +18,7 @@ const TemplateNews = ({ url }: TemplateNewsProps) => {
         pt={10}
         mb={6}
         size="xl"
+        fontWeight="black"
         borderBottom="1px"
         borderColor="gray.700"
         pb={5}

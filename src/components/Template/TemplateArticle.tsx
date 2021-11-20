@@ -18,7 +18,7 @@ const TemplateArticle = ({ url }: TemplateArticleProps) => {
         as="h1"
         pt={10}
         mb={6}
-        size="xl"
+        size="2xl"
         borderBottom="1px"
         borderColor="gray.700"
         pb={5}
