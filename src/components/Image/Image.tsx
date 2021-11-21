@@ -14,6 +14,7 @@ const ChakraNextUnwrappedImage = chakra(NextImage, {
       "loader ",
       "layout",
       "objectFit",
+      "borderRadius",
     ].includes(prop),
 });
 
@@ -48,6 +49,7 @@ const Image = (props: ImageProps & BoxProps) => {
     quality,
     height,
     layout,
+    borderRadius,
     objectFit,
     ...rest
   } = props;
@@ -71,6 +73,7 @@ const Image = (props: ImageProps & BoxProps) => {
         src={src}
         alt={alt}
         layout={layout}
+        borderRadius={borderRadius}
         objectFit={objectFit}
         transition="all 0.2s"
       />
