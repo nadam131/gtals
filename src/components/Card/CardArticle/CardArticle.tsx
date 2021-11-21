@@ -1,8 +1,6 @@
-import { AspectRatio, Box, Heading, Text } from "@chakra-ui/layout";
-import React from "react";
 import Image from "next/image";
+import { Box, Heading, Text, Stack, AspectRatio } from "@chakra-ui/react";
 import { ArticleProps } from "../../../types";
-
 interface CardArticleProps {
   article: ArticleProps;
 }
@@ -10,30 +8,37 @@ interface CardArticleProps {
 const CardArticle = ({ article }: CardArticleProps) => {
   return (
     <Box
-      p={6}
       h="100%"
-      border="1px solid"
-      borderColor="gray.600"
-      boxShadow="md"
-      rounded="lg"
-      overflow="hidden"
-      transition="border-color .2s"
-      _hover={{
-        borderColor: "primary",
-      }}
+      bg="gray.800"
+      boxShadow={"2xl"}
+      rounded={"md"}
+      overflow={"hidden"}
     >
-      <AspectRatio ratio={21 / 10}>
-        <Image
-          src={article.image}
-          layout="fill"
-          objectFit="cover"
-          alt={article.title}
-        />
-      </AspectRatio>
-      <Heading mt={5} size="md" as="h2">
-        {article.title}
-      </Heading>
-      <Text mt={3}>{article.description}</Text>
+      <Box pos={"relative"}>
+        <AspectRatio ratio={245 / 157}>
+          <Image
+            src={article.image}
+            layout="fill"
+            objectFit="cover"
+            alt={article.title}
+          />
+        </AspectRatio>
+      </Box>
+      <Stack p={7}>
+        <Text
+          textTransform={"uppercase"}
+          color={"gray.400"}
+          fontSize={"xs"}
+          letterSpacing={1.1}
+          mb={1}
+        >
+          Новости
+        </Text>
+        <Heading as="h3" pb={2} fontSize={"2xl"} fontFamily={"heading"}>
+          {article.title}
+        </Heading>
+        <Text color={"gray.300"}>{article.description}</Text>
+      </Stack>
     </Box>
   );
 };

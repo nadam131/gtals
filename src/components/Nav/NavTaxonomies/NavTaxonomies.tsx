@@ -26,14 +26,15 @@ const NavTaxonomies = ({
           <ButtonGroup
             isAttached
             variant="solid"
-            colorScheme="whiteAlpha"
+            colorScheme="black"
             spacing="0"
+            size="lg"
           >
             {radios.map((r) => (
               <Button
-                _last={{ borderRight: 0 }}
-                borderRight="2px solid"
-                borderColor="gray.900"
+                _last={{ borderLeft: 0 }}
+                border="1px solid"
+                borderColor="gray.500"
                 key={r.id}
                 onClick={() => handleFilterChange(r.value)}
               >
