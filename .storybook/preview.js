@@ -1,4 +1,6 @@
 import theme from "../src/theme";
+import Provider from "../src/components/Provider/Provider";
+import * as NextImage from "next/image";
 
 export const parameters = {
   layout: "fullscreen",
@@ -11,3 +13,19 @@ export const parameters = {
   },
   chakra: { theme: theme },
 };
+
+export const decorators = [
+  (Story) => (
+    <Provider>
+      <Story />
+    </Provider>
+  ),
+];
+
+// next/image
+const OriginalNextImage = NextImage.default;
+
+Object.defineProperty(NextImage, "default", {
+  configurable: true,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
+});
