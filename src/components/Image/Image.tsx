@@ -58,8 +58,8 @@ const Image = (props: any) => {
     <AspectRatio
       w="100%"
       pos="relative"
-      cursor="pointer"
       className="group"
+      borderRadius={borderRadius}
       {...rest}
     >
       <ChakraNextUnwrappedImage

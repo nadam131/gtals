@@ -8,7 +8,14 @@ export default {
   component: CardCharacter,
 } as ComponentMeta<typeof CardCharacter>;
 
-const Template: ComponentStory<typeof CardCharacter> = () => <CardCharacter />;
+const Template: ComponentStory<typeof CardCharacter> = (args) => (
+  <CardCharacter {...args} />
+);
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  name: "Майкл Де Санта",
+  description: "Кризис среднего возраста",
+  image: "/assets/images/michael.jpeg",
+  color: "#65b4d4",
+};

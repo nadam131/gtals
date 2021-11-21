@@ -1,12 +1,24 @@
 import { Box, Center, Heading, Text, Stack } from "@chakra-ui/react";
 import Image from "../../Image/Image";
 
-const CardCharacter = ({ name, image }) => {
+interface CardCharacterProps {
+  name: string;
+  image: string;
+  description: string;
+  color: string;
+}
+
+const CardCharacter = ({
+  name,
+  image,
+  description,
+  color,
+}: CardCharacterProps) => {
   return (
     <Center>
       <Box
         role={"group"}
-        p={6}
+        py={8}
         mt={20}
         maxW={"xs"}
         w={"full"}
@@ -16,27 +28,30 @@ const CardCharacter = ({ name, image }) => {
         pos={"relative"}
         zIndex={1}
       >
-        <Box mt={-20} mb={5} pos={"relative"} height={"200px"}>
+        <Box mt={-20} mb={8} pos={"relative"} height={"200px"}>
           <Center>
             <Image
+              boxShadow={"dark-lg"}
               boxSize={200}
-              src={"/assets/images/michael.jpeg"}
+              src={image}
               alt="image"
               layout="fill"
               objectFit={"cover"}
               borderRadius="full"
+              border="5px solid"
+              borderColor="transparent"
+              transition="border-color .2s"
+              _groupHover={{ borderColor: color }}
             />
           </Center>
         </Box>
-        <Stack align={"center"}>
+        <Stack align={"center"} spacing={2}>
           <Heading fontSize={"3xl"} fontFamily={"heading"} fontWeight={500}>
-            Майкл Де Санта
+            {name}
           </Heading>
-          <Stack direction={"row"} align={"center"}>
-            <Text fontWeight={800} fontSize={"sm"}>
-              Вор в законе
-            </Text>
-          </Stack>
+          <Text fontWeight="700" color="gray.600" fontSize={"sm"}>
+            {description}
+          </Text>
         </Stack>
       </Box>
     </Center>
