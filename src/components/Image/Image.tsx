@@ -41,7 +41,7 @@ const toBase64 = (str: string) =>
     ? Buffer.from(str).toString("base64")
     : window.btoa(str);
 
-const Image = (props: ImageProps & BoxProps) => {
+const Image = (props: any) => {
   const {
     src,
     alt,
@@ -53,9 +53,10 @@ const Image = (props: ImageProps & BoxProps) => {
     objectFit,
     ...rest
   } = props;
+
   return (
     <AspectRatio
-      ratio={16 / 9}
+      w="100%"
       pos="relative"
       cursor="pointer"
       className="group"
