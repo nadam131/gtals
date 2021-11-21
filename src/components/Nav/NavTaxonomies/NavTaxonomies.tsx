@@ -19,6 +19,8 @@ const NavTaxonomies = ({
     router.push(e.target?.value || e);
   };
 
+  // TODO Внешний вид
+
   return (
     <div>
       <HStack>
