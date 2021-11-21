@@ -1,4 +1,4 @@
-import { Box, AspectRatio, BoxProps, chakra } from "@chakra-ui/react";
+import { AspectRatio, BoxProps, chakra } from "@chakra-ui/react";
 import NextImage, { ImageProps, ImageLoaderProps } from "next/image";
 
 const ChakraNextUnwrappedImage = chakra(NextImage, {
