@@ -1,4 +1,5 @@
 import theme from "../src/theme";
+import Provider from "../src/components/Provider/Provider";
 
 export const parameters = {
   layout: "fullscreen",
@@ -9,6 +10,13 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  // TODO Убедиться, что storybook и next синхронизированны
   chakra: { theme: theme },
 };
+
+export const decorators = [
+  (Story) => (
+    <Provider>
+      <Story />
+    </Provider>
+  ),
+];
