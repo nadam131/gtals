@@ -4,6 +4,7 @@ const IMAGE =
   "https://gtals.ru/wp-content/uploads/2015/07/gta5_michael_de_santa_main-1.jpg";
 
 // interface CardCharacterProps {}
+// TODO Доделать
 
 const CardCharacter = () => {
   return (
