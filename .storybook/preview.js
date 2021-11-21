@@ -9,5 +9,6 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  // TODO Убедиться, что storybook и next синхронизированны
   chakra: { theme: theme },
 };
