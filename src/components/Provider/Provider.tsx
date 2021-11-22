@@ -6,6 +6,7 @@ import theme from "../../theme";
 
 import "@fontsource/raleway/400.css";
 import "@fontsource/open-sans/700.css";
+import "@fontsource/merriweather";
 
 const Provider = ({ children }: { children: any }) => {
   return (

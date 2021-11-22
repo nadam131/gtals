@@ -1,8 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
   fonts: {
-    heading: "Open Sans",
+    heading: "Merriweather",
     body: "Raleway",
+    copyright: "Raleway",
     gta: "GTA Russian",
   },
 };
