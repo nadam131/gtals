@@ -1,61 +1,25 @@
-import { Box, Center, Heading, Text, Stack } from "@chakra-ui/react";
-import Image from "../../Image/Image";
+import React from "react";
+import Hero from "./Hero";
+import Secondary from "./Secondary";
 
-interface CardCharacterProps {
+const VARIANTS = {
+  base: Hero,
+  hero: Hero,
+  secondary: Secondary,
+};
+
+export interface CardCharacterProps {
   name: string;
   image: string;
   description: string;
-  color: string;
+  color?: string;
+  variant?: "base" | "hero" | "secondary";
 }
 
-const CardCharacter = ({
-  name,
-  image,
-  description,
-  color,
-}: CardCharacterProps) => {
-  return (
-    <Center>
-      <Box
-        role={"group"}
-        py={8}
-        mt={20}
-        maxW={"xs"}
-        w={"full"}
-        bg={"gray.800"}
-        boxShadow={"2xl"}
-        rounded={"lg"}
-        pos={"relative"}
-        zIndex={1}
-      >
-        <Box mt={-20} mb={8} pos={"relative"} height={"200px"}>
-          <Center>
-            <Image
-              boxShadow={"dark-lg"}
-              boxSize={200}
-              src={image}
-              alt="image"
-              layout="fill"
-              objectFit={"cover"}
-              borderRadius="full"
-              border="5px solid"
-              borderColor="transparent"
-              transition="border-color .2s"
-              _groupHover={{ borderColor: color }}
-            />
-          </Center>
-        </Box>
-        <Stack align={"center"} spacing={2}>
-          <Heading fontSize={"3xl"} fontFamily={"heading"} fontWeight={500}>
-            {name}
-          </Heading>
-          <Text fontWeight="700" color="gray.600" fontSize={"sm"}>
-            {description}
-          </Text>
-        </Stack>
-      </Box>
-    </Center>
-  );
+const CardCharacter = ({ variant = "base", ...props }: CardCharacterProps) => {
+  return React.createElement(VARIANTS[variant as keyof typeof VARIANTS], {
+    ...props,
+  });
 };
 
 export default CardCharacter;
