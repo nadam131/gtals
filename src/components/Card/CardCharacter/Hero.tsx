@@ -14,6 +14,7 @@ const Hero = ({ image, color, name, description }: CardCharacterProps) => {
       mt={20}
       pos="relative"
       top={0}
+      backgroundColor="gray.800"
       transition="border-color .2s, top .2s, box-shadow .2s"
       _hover={{ borderColor: `${color}a8`, top: -3, boxShadow: "2xl" }}
     >
@@ -35,16 +36,17 @@ const Hero = ({ image, color, name, description }: CardCharacterProps) => {
           <Box
             px={6}
             py={8}
+            pt={20}
             pos="absolute"
             top="auto !important"
             height="auto !important"
-            bgGradient="linear(to-t, black, transparent)"
+            bgGradient="linear(to-t, black 30%, transparent 100%)"
           >
             <VStack spacing={3}>
-              <Heading size="xl" fontFamily="heading">
+              <Heading fontSize={"3xl"} fontFamily="heading">
                 {name}
               </Heading>
-              <Text fontWeight="700" color="gray.500">
+              <Text fontSize="sm" fontWeight="700" color="gray.500">
                 {description}
               </Text>
             </VStack>

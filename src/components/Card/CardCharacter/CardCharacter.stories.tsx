@@ -1,7 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CardCharacter from "./CardCharacter";
-import { Container, SimpleGrid } from "@chakra-ui/layout";
+import CardCharacter, { VARIANTS } from "./CardCharacter";
+import { Box, Container, SimpleGrid } from "@chakra-ui/layout";
+import { useBreakpointValue } from "@chakra-ui/media-query";
 
 export default {
   title: "Components/Card/CardCharacter",
@@ -26,52 +27,61 @@ const TemplateGrid: ComponentStory<typeof CardCharacter> = (args) => (
   </SimpleGrid>
 );
 
-const TemplateGrid_Heroes: ComponentStory<typeof CardCharacter> = (args) => (
-  <Container maxW="container.xxl">
-    <SimpleGrid columns={[1, 2, null, 3]} spacingX={5}>
-      <CardCharacter {...args} />
-      <CardCharacter
-        image="/assets/images/franklin_transparent_2.png"
-        name="Франклин Клинтон"
-        description="Хочет свалить из квартала"
-        color="#abedab"
-      />
-      <CardCharacter
-        image="/assets/images/trevor_transparent_2.png"
-        name="Тревор Филипс"
-        description="Тяжелое детство"
-        color="#ffa357"
-      />
-    </SimpleGrid>
-    <SimpleGrid mt={30} columns={[1, 2, null, 4]} spacingX={10}>
-      <CardCharacter
-        {...args}
-        name="Аманда Де Санта"
-        variant="secondary"
-        color=""
-        image="https://gtals.ru/wp-content/uploads/2015/08/gta5_amanda_de_santa_main.jpg"
-      />
-      <CardCharacter
-        image="https://gtals.ru/wp-content/uploads/2015/08/gta5_jimmy_de_santa_main.jpg"
-        name="Джимми Де Санта"
-        description="Золотая молодежь"
-        variant="secondary"
-      />
-      <CardCharacter
-        image="https://gtals.ru/wp-content/uploads/2015/08/gta5_tracey_de_santa_main.jpg"
-        name="Трейси Де Санта"
-        description="Избалованная принцесса"
-        variant="secondary"
-      />
-      <CardCharacter
-        image="https://gtals.ru/wp-content/uploads/2015/08/gta5_lester_crest_main-1.jpg"
-        name="Лестер Крест"
-        description="Главный по АЙТИ"
-        variant="secondary"
-      />
-    </SimpleGrid>
-  </Container>
-);
+const TemplateGrid_Heroes: ComponentStory<typeof CardCharacter> = (args) => {
+  const variant =
+    (useBreakpointValue({
+      base: "secondary",
+      lg: "hero",
+    }) as keyof typeof VARIANTS) || "base";
+  return (
+    <Container maxW="container.xxl">
+      <SimpleGrid columns={3} spacingX={5}>
+        <CardCharacter {...args} variant={variant} />
+        <CardCharacter
+          variant={variant}
+          image="/assets/images/franklin_transparent_2.png"
+          name="Франклин Клинтон"
+          description="Хочет свалить из квартала"
+          color="#abedab"
+        />
+        <CardCharacter
+          variant={variant}
+          image="/assets/images/trevor_transparent_2.png"
+          name="Тревор Филипс"
+          description="Тяжелое детство"
+          color="#ffa357"
+        />
+      </SimpleGrid>
+      <SimpleGrid mt={30} columns={[1, 2, 3, 4]} spacingX={10}>
+        <CardCharacter
+          {...args}
+          name="Аманда Де Санта"
+          variant="secondary"
+          color=""
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_amanda_de_santa_main.jpg"
+        />
+        <CardCharacter
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_jimmy_de_santa_main.jpg"
+          name="Джимми Де Санта"
+          description="Золотая молодежь"
+          variant="secondary"
+        />
+        <CardCharacter
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_tracey_de_santa_main.jpg"
+          name="Трейси Де Санта"
+          description="Избалованная принцесса"
+          variant="secondary"
+        />
+        <CardCharacter
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_lester_crest_main-1.jpg"
+          name="Лестер Крест"
+          description="Главный по АЙТИ"
+          variant="secondary"
+        />
+      </SimpleGrid>
+    </Container>
+  );
+};
 
 export const Base = Template.bind({});
 Base.args = {

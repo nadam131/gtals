@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "./Hero";
 import Secondary from "./Secondary";
 
-const VARIANTS = {
+export const VARIANTS = {
   base: Hero,
   hero: Hero,
   secondary: Secondary,
