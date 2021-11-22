@@ -6,23 +6,39 @@ import { CardCharacterProps } from "./CardCharacter";
 const Hero = ({ image, color, name, description }: CardCharacterProps) => {
   return (
     <Box
+      role="group"
       rounded={"lg"}
-      overflow="hidden"
       border="6px solid"
-      borderColor="transparent"
-      transition="border-color .2s"
-      _hover={{ borderColor: `${color}a8` }}
+      borderColor="border.dark"
+      boxShadow={"dark-lg"}
+      mt={20}
+      pos="relative"
+      top={0}
+      transition="border-color .2s, top .2s, box-shadow .2s"
+      _hover={{ borderColor: `${color}a8`, top: -3, boxShadow: "2xl" }}
     >
       <AspectRatio ratio={4 / 6}>
         <>
-          <Image src={image} alt="hero" layout="fill" objectFit="cover" />
+          <Image
+            src={image}
+            alt="hero"
+            layout="fill"
+            mt={-20}
+            opacity={0.85}
+            objectFit="contain"
+            objectPosition="top"
+            transition="opacity .2s"
+            _groupHover={{
+              opacity: 1,
+            }}
+          />
           <Box
-            px={5}
+            px={6}
             py={8}
             pos="absolute"
             top="auto !important"
             height="auto !important"
-            backgroundColor="#000"
+            bgGradient="linear(to-t, black, transparent)"
           >
             <VStack spacing={3}>
               <Heading size="xl" fontFamily="heading">

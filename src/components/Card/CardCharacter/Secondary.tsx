@@ -26,17 +26,19 @@ const Secondary = ({ image, color, name, description }: CardCharacterProps) => {
               alt="image"
               layout="fill"
               objectFit={"cover"}
+              objectPosition="top"
               borderRadius="full"
               border="5px solid"
               borderColor="transparent"
-              transition="border-color .2s"
-              _groupHover={{ borderColor: `${color}a8` }}
+              transition="border-color .2s, opacity .2s"
+              opacity="0.75"
+              _groupHover={{ borderColor: `${color}a8`, opacity: 1 }}
             />
           </Center>
         </Box>
         <Stack align={"center"} spacing={3}>
           <Heading
-            fontSize={["xl", null, null, "3xl"]}
+            fontSize={["xl", null, null, "2xl"]}
             fontFamily={"heading"}
             letterSpacing="wide"
             fontWeight={700}
