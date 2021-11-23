@@ -10,13 +10,13 @@ const Hero = ({ image, color, name, description }: CardCharacterProps) => {
       rounded={"lg"}
       border="6px solid"
       borderColor="border.dark"
-      boxShadow={"dark-lg"}
+      boxShadow={"2xl"}
       mt={20}
       pos="relative"
       top={0}
       backgroundColor="gray.800"
       transition="border-color .2s, top .2s, box-shadow .2s"
-      _hover={{ borderColor: `${color}a8`, top: -3, boxShadow: "2xl" }}
+      _hover={{ borderColor: `${color}a8`, top: -1, boxShadow: "dark-lg" }}
     >
       <AspectRatio ratio={4 / 6}>
         <>

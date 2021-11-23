@@ -5,6 +5,7 @@ export default {
       "html, body": {
         backgroundColor: "gray.900",
         color: "white",
+        padding: 4,
       },
     },
   },

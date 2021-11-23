@@ -1,44 +1,50 @@
-import Image from "next/image";
-import { Box, Heading, Text, Stack, AspectRatio } from "@chakra-ui/react";
-import { ArticleProps } from "../../../types";
-interface CardArticleProps {
-  article: ArticleProps;
+import * as React from "react";
+import {
+  useMultiStyleConfig,
+  Box,
+  Heading,
+  BoxProps,
+  VStack,
+  Text,
+} from "@chakra-ui/react";
+import Image from "../../Image/Image";
+
+interface CardArticleProps extends BoxProps {
+  variant?: "shadow" | undefined;
+  size?: "xs" | "md" | "lg" | undefined;
+
+  title: string;
+  children?: any;
+  image?: string;
+  href?: string;
+  description?: string;
+  color?: string;
 }
 
-const CardArticle = ({ article }: CardArticleProps) => {
+const CardArticle = ({
+  variant = undefined,
+  size = undefined,
+  children,
+  description,
+  image,
+  color,
+  ...rest
+}: CardArticleProps) => {
+  const styles = useMultiStyleConfig(`CardArticleStyles`, {
+    variant,
+    color,
+    size,
+  });
+
   return (
-    <Box
-      h="100%"
-      bg="gray.800"
-      boxShadow={"2xl"}
-      rounded={"md"}
-      overflow={"hidden"}
-    >
-      <Box pos={"relative"}>
-        <AspectRatio ratio={245 / 157}>
-          <Image
-            src={article.image}
-            layout="fill"
-            objectFit="cover"
-            alt={article.title}
-          />
-        </AspectRatio>
-      </Box>
-      <Stack p={7}>
-        <Text
-          textTransform={"uppercase"}
-          color={"gray.400"}
-          fontSize={"xs"}
-          letterSpacing={1.1}
-          mb={1}
-        >
-          Новости
-        </Text>
-        <Heading as="h3" pb={2} fontSize={"2xl"} fontFamily={"heading"}>
-          {article.title}
-        </Heading>
-        <Text color={"gray.300"}>{article.description}</Text>
-      </Stack>
+    <Box role="group" __css={styles.outer} {...rest}>
+      <Image src={image} alt={children} __css={styles.image} />
+      <VStack spacing={3}>
+        <Heading sx={{ ...styles.heading }}>{children}</Heading>
+        {description && (
+          <Text sx={{ ...styles.description }}>{description}</Text>
+        )}
+      </VStack>
     </Box>
   );
 };

@@ -1,6 +1,7 @@
 import theme from "../src/theme";
 import Provider from "../src/components/Provider/Provider";
 import * as NextImage from "next/image";
+import { Center } from "@chakra-ui/layout";
 
 export const parameters = {
   layout: "fullscreen",
@@ -17,7 +18,9 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <Provider>
-      <Story />
+      <Center>
+        <Story />
+      </Center>
     </Provider>
   ),
 ];

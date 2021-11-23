@@ -1,7 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import CardCharacter, { VARIANTS } from "./CardCharacter";
-import { Box, Container, SimpleGrid } from "@chakra-ui/layout";
+import CardArticle from "../CardArticle/CardArticle";
+import { Container, SimpleGrid } from "@chakra-ui/layout";
 import { useBreakpointValue } from "@chakra-ui/media-query";
 
 export default {
@@ -52,7 +53,7 @@ const TemplateGrid_Heroes: ComponentStory<typeof CardCharacter> = (args) => {
           color="#ffa357"
         />
       </SimpleGrid>
-      <SimpleGrid mt={30} columns={[1, 2, 3, 4]} spacingX={10}>
+      <SimpleGrid mt={50} columns={[1, 2, 3, 4]} spacingX={10}>
         <CardCharacter
           {...args}
           name="Аманда Де Санта"
@@ -75,6 +76,83 @@ const TemplateGrid_Heroes: ComponentStory<typeof CardCharacter> = (args) => {
         <CardCharacter
           image="https://gtals.ru/wp-content/uploads/2015/08/gta5_lester_crest_main-1.jpg"
           name="Лестер Крест"
+          description="Главный по АЙТИ"
+          variant="secondary"
+        />
+        <CardCharacter
+          {...args}
+          name="Аманда Де Санта"
+          variant="secondary"
+          color=""
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_amanda_de_santa_main.jpg"
+        />
+        <CardCharacter
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_jimmy_de_santa_main.jpg"
+          name="Джимми Де Санта"
+          description="Золотая молодежь"
+          variant="secondary"
+        />
+        <CardCharacter
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_tracey_de_santa_main.jpg"
+          name="Трейси Де Санта"
+          description="Избалованная принцесса"
+          variant="secondary"
+        />
+        <CardCharacter
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_lester_crest_main-1.jpg"
+          name="Лестер Крест"
+          description="Главный по АЙТИ"
+          variant="secondary"
+        />
+      </SimpleGrid>
+      <SimpleGrid mt={50} columns={[1, 2, 3, 4]} spacing={10}>
+        <CardArticle
+          {...args}
+          title="Аманда Де Санта"
+          variant="secondary"
+          color=""
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_amanda_de_santa_main.jpg"
+        />
+        <CardArticle
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_jimmy_de_santa_main.jpg"
+          title="Джимми Де Санта"
+          description="Золотая молодежь"
+          variant="secondary"
+        />
+        <CardArticle
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_tracey_de_santa_main.jpg"
+          title="Трейси Де Санта"
+          description="Избалованная принцесса"
+          variant="secondary"
+        />
+        <CardArticle
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_lester_crest_main-1.jpg"
+          title="Лестер Крест"
+          description="Главный по АЙТИ"
+          variant="secondary"
+        />
+        <CardArticle
+          {...args}
+          title="Аманда Де Санта"
+          variant="secondary"
+          color=""
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_amanda_de_santa_main.jpg"
+        />
+        <CardArticle
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_jimmy_de_santa_main.jpg"
+          title="Джимми Де Санта"
+          description="Золотая молодежь"
+          variant="secondary"
+        />
+        <CardArticle
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_tracey_de_santa_main.jpg"
+          title="Трейси Де Санта"
+          description="Избалованная принцесса"
+          variant="secondary"
+        />
+        <CardArticle
+          image="https://gtals.ru/wp-content/uploads/2015/08/gta5_lester_crest_main-1.jpg"
+          title="Лестер Крест"
           description="Главный по АЙТИ"
           variant="secondary"
         />
