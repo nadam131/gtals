@@ -1,6 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import CardArticle from "./CardArticle";
+import { Container } from "@chakra-ui/react";
 
 export default {
   title: "Components/Card/CardArticle",
@@ -8,7 +9,9 @@ export default {
 } as ComponentMeta<typeof CardArticle>;
 
 const Template: ComponentStory<typeof CardArticle> = (args) => (
-  <CardArticle {...args}>{args.title}</CardArticle>
+  <Container maxW="md">
+    <CardArticle {...args}>{args.title}</CardArticle>
+  </Container>
 );
 
 export const XS = Template.bind({});

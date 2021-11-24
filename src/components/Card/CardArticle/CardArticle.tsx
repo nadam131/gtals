@@ -13,7 +13,7 @@ interface CardArticleProps extends BoxProps {
   variant?: "shadow" | undefined;
   size?: "xs" | "md" | "lg" | undefined;
 
-  title: string;
+  title?: string;
   children?: any;
   image?: string;
   href?: string;
@@ -25,6 +25,7 @@ const CardArticle = ({
   variant = undefined,
   size = undefined,
   children,
+  title,
   description,
   image,
   color,
@@ -39,8 +40,8 @@ const CardArticle = ({
   return (
     <Box role="group" __css={styles.outer} {...rest}>
       <Image src={image} alt={children} __css={styles.image} />
-      <VStack spacing={3}>
-        <Heading sx={{ ...styles.heading }}>{children}</Heading>
+      <VStack sx={{ ...styles.texts }}>
+        {title && <Heading sx={{ ...styles.heading }}>{title}</Heading>}
         {description && (
           <Text sx={{ ...styles.description }}>{description}</Text>
         )}

@@ -3,7 +3,7 @@ export default {
   fonts: {
     heading: "Merriweather",
     body: "Raleway",
-    copyright: "Raleway",
+    copyright: "Copyright",
     gta: "GTA Russian",
   },
 };

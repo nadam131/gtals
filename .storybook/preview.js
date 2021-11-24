@@ -23,7 +23,7 @@ export const parameters = {
 export const decorators = [
   (Story) => (
     <Provider>
-      <Container maxW="container.xxl">
+      <Container maxW="container.xxl" px={[2, null, 5, null, 10]}>
         <Story />
       </Container>
     </Provider>

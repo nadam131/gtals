@@ -16,9 +16,24 @@ const Fonts = () => {
                 url('/assets/fonts/GTARussian/GTARussian-Regular.svg#GTARussian-Regular')
                     format('svg');
             font-weight: normal;
-            font-style: normal;
+            font-style: normal; 
             font-display: swap;
         }
+
+        @font-face {
+          font-family: 'Copyright';
+          src: url('/assets/fonts/CopyrightHouseIndustries/CopyrightHouseIndustries.eot');
+          src: url('/assets/fonts/CopyrightHouseIndustries/CopyrightHouseIndustries.eot?#iefix')
+                  format('embedded-opentype'),
+              url('/assets/fonts/CopyrightHouseIndustries/CopyrightHouseIndustries.woff2') format('woff2'),
+              url('/assets/fonts/CopyrightHouseIndustries/CopyrightHouseIndustries.woff') format('woff'),
+              url('/assets/fonts/CopyrightHouseIndustries/CopyrightHouseIndustries.ttf') format('truetype'),
+              url('/assets/fonts/CopyrightHouseIndustries/CopyrightHouseIndustries.svg#GTARussian-Regular')
+                  format('svg');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+      }
     `}
     />
   );
