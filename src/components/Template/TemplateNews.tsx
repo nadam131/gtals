@@ -1,8 +1,9 @@
-import { Box, Container, Heading } from "@chakra-ui/layout";
+import { Box, Heading } from "@chakra-ui/layout";
 import { useFetch } from "../../hooks/use-fetch";
 
 import React from "react";
 import { GridAside } from "../Grid/Grid";
+import Container from "../Container/Container";
 
 interface TemplateNewsProps {
   url: string;
@@ -12,7 +13,7 @@ const TemplateNews = ({ url }: TemplateNewsProps) => {
   const { data: post } = useFetch(url);
 
   return (
-    <Container maxW="container.xxl">
+    <Container>
       <Heading
         as="h1"
         pt={10}

@@ -1919,6 +1919,11 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/merriweather-sans@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/merriweather-sans/-/merriweather-sans-4.5.0.tgz#88efd8f18d2ce0e49273f09bd00e051886ba9a25"
+  integrity sha512-3PVzDVdxyPZljKl3Ng+pXp2BSbGKQT12lvgOqUyW3fIBkanAB+Ovq0LbfJzBVvUet0MQRZkUgeYaH3PZhxTYJw==
+
 "@fontsource/merriweather@^4.5.1":
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/@fontsource/merriweather/-/merriweather-4.5.1.tgz#f082e0e1ea92b39f16191ce05834123cdbfce741"

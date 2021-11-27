@@ -1,5 +1,5 @@
 export interface ArticleProps {
-  id: number;
+  id: string;
   slug: string;
   date: string;
   link: string;

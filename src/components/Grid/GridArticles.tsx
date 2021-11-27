@@ -43,7 +43,7 @@ const GridArticles = ({ articles, ...props }: GridArticlesProps) => {
                     color: "primary.500",
                   }}
                 >
-                  <CardArticle article={article} />
+                  <CardArticle {...article} />
                 </CLink>
               </Link>
             </GridItem>

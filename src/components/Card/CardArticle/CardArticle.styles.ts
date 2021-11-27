@@ -27,13 +27,13 @@ export const CardArticleStyles = {
         _hover: { opacity: 1, borderColor: `${color || "white"}` },
       },
       image: {
-        boxSize: ["50px", "60px"],
+        boxSize: ["50px", "75px", "60px"],
         mr: 5,
         borderRadius: "full",
         overflow: "hidden",
       },
       heading: {
-        fontSize: "lg",
+        fontSize: ["lg", "xl"],
       },
       description: {
         display: "none",
@@ -83,11 +83,6 @@ export const CardArticleStyles = {
       image: {
         ratio: 4 / 7,
         mt: -20,
-        transition: "transform .3s ease-out",
-        _groupHover: {
-          transform: "scale(1.1)",
-          transition: "transform 5s ease-out",
-        },
       },
       heading: {
         whiteSpace: "nowrap",
