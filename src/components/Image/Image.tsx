@@ -6,6 +6,7 @@ const ChakraNextUnwrappedImage = chakra(NextImage, {
     [
       "width",
       "height",
+      "ratio",
       "src",
       "alt",
       "quality",
@@ -14,6 +15,7 @@ const ChakraNextUnwrappedImage = chakra(NextImage, {
       "loader ",
       "layout",
       "objectFit",
+      "objectPosition",
       "borderRadius",
     ].includes(prop),
 });
@@ -48,18 +50,22 @@ const Image = (props: any) => {
     width,
     quality,
     height,
-    layout,
+    layout = "fill",
     borderRadius,
-    objectFit,
+    objectFit = "cover",
+    objectPosition = "top",
+    __css,
     ...rest
   } = props;
 
   return (
     <AspectRatio
       w="100%"
+      h="100%"
       pos="relative"
-      cursor="pointer"
       className="group"
+      borderRadius={borderRadius}
+      {...__css}
       {...rest}
     >
       <ChakraNextUnwrappedImage
@@ -76,6 +82,7 @@ const Image = (props: any) => {
         layout={layout}
         borderRadius={borderRadius}
         objectFit={objectFit}
+        objectPosition={objectPosition}
         transition="all 0.2s"
       />
     </AspectRatio>

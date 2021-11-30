@@ -1,3 +1,4 @@
+import CardArticleStyles from "./../components/Card/CardArticle/CardArticle.styles";
 import { extendTheme } from "@chakra-ui/react";
 
 import styles from "./styles";
@@ -6,6 +7,7 @@ import fonts from "./foundations/fonts";
 import colors from "./foundations/colors";
 
 const overrides = {
+  components: { CardArticleStyles },
   ...styles,
   ...sizes,
   ...fonts,

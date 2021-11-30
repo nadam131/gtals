@@ -11,6 +11,6 @@ module.exports = {
     ];
   },
   images: {
-    domains: ["gtals.ru", "via.placeholder.com"],
+    domains: ["gtals.ru", "via.placeholder.com", "localhost"],
   },
 };

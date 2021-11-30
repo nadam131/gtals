@@ -1,6 +1,6 @@
-import { Container } from "@chakra-ui/react";
 import type { GetStaticProps } from "next";
 import { ENDPOINTS, fetcher } from "../api";
+import Container from "../components/Container/Container";
 import FeedMain from "../components/Feed/FeedMain/FeedMain";
 
 interface HomePageProps {
@@ -9,7 +9,7 @@ interface HomePageProps {
 
 const HomePage = ({ articles }: HomePageProps) => {
   return (
-    <Container maxW="container.xxl">
+    <Container>
       <FeedMain articles={articles} />
     </Container>
   );

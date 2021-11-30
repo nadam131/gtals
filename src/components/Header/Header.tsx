@@ -1,6 +1,7 @@
-import { Box, Container, HStack } from "@chakra-ui/react";
+import { Box, HStack } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
+import Container from "../Container/Container";
 import Logo from "../Logo/Logo";
 import NavMain from "../Nav/NavMain/NavMain";
 
@@ -27,7 +28,7 @@ const MENU = [
 const Header: React.FC = () => {
   return (
     <Box {...styles.wrapper}>
-      <Container maxW="container.xxl">
+      <Container>
         <HStack spacing="20">
           <Link href="/">
             <a>

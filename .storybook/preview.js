@@ -1,6 +1,9 @@
 import theme from "../src/theme";
 import Provider from "../src/components/Provider/Provider";
 import * as NextImage from "next/image";
+import { Container } from "@chakra-ui/layout";
+
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
 export const parameters = {
   layout: "fullscreen",
@@ -12,6 +15,9 @@ export const parameters = {
     },
   },
   chakra: { theme: theme },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+  },
 };
 
 export const decorators = [

@@ -11,8 +11,8 @@ const NavMain = ({ list }: NavMainProps) => {
     <HStack
       fontSize="1xl"
       textTransform="uppercase"
-      fontWeight="400"
-      fontFamily="heading"
+      fontWeight="700"
+      fontFamily="body"
       spacing="9"
       as="nav"
     >

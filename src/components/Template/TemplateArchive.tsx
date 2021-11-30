@@ -1,10 +1,11 @@
 import React from "react";
 import useSWR from "swr";
-import { Box, Container } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 import NavTaxonomies from "../../components/Nav/NavTaxonomies/NavTaxonomies";
 import { ENDPOINTS, fetcher } from "../../api";
 import GridArticles from "../Grid/GridArticles";
+import Container from "../Container/Container";
 
 interface TemplateArchiveProps {
   pages: number;
@@ -26,7 +27,7 @@ const TemplateArchive = ({ url, postType }: TemplateArchiveProps) => {
 
   return (
     <Box pt={6}>
-      <Container maxW="container.xxl">
+      <Container>
         <NavTaxonomies filters={taxonomies.filters} />
         <GridArticles mt={8} articles={articles} />
       </Container>
